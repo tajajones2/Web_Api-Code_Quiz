@@ -1,4 +1,8 @@
+var introEl= document.querySelector("intro")
+var qaViewEl= document.querySelector("#qa-view")
+var timerEl= document.querySelector("timer")
 
+var startQuizBtn= document.querySelector("#start-quiz")
 /*
 step 1. displays start page - title and paragraph
 start button -  (triggers the quiz game and displays timer and question page)
@@ -17,7 +21,30 @@ Show a dashboard of all the highscores
 
 
 
+var timeRemaining=75 // this is for each question 
+var clockid
 
+var question= [{
+title:"new question 1",
+answer:[ "answer1", "answer 2", "answer 3", "answer 4"]
+}]
+
+function countDown (){
+    timerEl.textContent=timerRemaining
+    timeRemaining--
+}
+
+
+function startGame (){
+    qaViewEl.classList.remove("hide")
+    introEl.classList.add("hide")
+    clockid=setInterval(countDown,1000)
+    
+
+}
+
+
+startQuizBtn.addEventListener("click", startGame)
 
 
 

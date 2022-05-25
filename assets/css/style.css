@@ -1,0 +1,17 @@
+header {
+    display: flex;
+
+}
+
+#high-scores {
+    width: 80%;
+}
+
+#timer {
+    width: 20%;
+    background-color: brown;
+}
+
+.hide {
+    display: none
+}
