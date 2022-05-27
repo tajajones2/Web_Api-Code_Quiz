@@ -1,15 +1,49 @@
 header {
     display: flex;
+    background-color: aquamarine;
+    color: blueviolet;
+    padding: 20px;
+    font-size: x-large;
+    font-weight: bold;
 
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+}
+#intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10%;
+    background-color: aquamarine;
+    border-radius: 25px;
+}
+
+#start-quiz {
+    width: 200px;
 }
 
 #high-scores {
     width: 80%;
+    padding: 10px;
 }
 
 #timer {
     width: 20%;
-    background-color: brown;
+    background-color: black;
+    padding: 10px;
+    
 }
 
 .hide {

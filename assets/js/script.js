@@ -1,6 +1,6 @@
 var introEl= document.querySelector("intro")
 var qaViewEl= document.querySelector("#qa-view")
-var timerEl= document.querySelector("timer")
+var timerEl= document.querySelector("#timer")
 
 var startQuizBtn= document.querySelector("#start-quiz")
 /*
@@ -21,33 +21,61 @@ Show a dashboard of all the highscores
 
 
 
-var timeRemaining=75 // this is for each question 
-var clockid
+var secondsLeft = 75;
+
 
 var question= [{
 title:"new question 1",
 answer:[ "answer1", "answer 2", "answer 3", "answer 4"]
 }]
 
-function countDown (){
-    timerEl.textContent=timerRemaining
-    timeRemaining--
-}
 
 
 function startGame (){
-    qaViewEl.classList.remove("hide")
-    introEl.classList.add("hide")
-    clockid=setInterval(countDown,1000)
+    qaViewEl.classList.remove("hide");
+    // introEl.classList.add("hide");
+    
+  
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timerEl.textContent = "Timer: " + secondsLeft;
+    
+        if(secondsLeft <= 0) {
+         
+          clearInterval(timerInterval);
+  
+          // link to scoreboard at the end, when scoreboard functiin is created 
+          // sendMessage();
+        }
+    
+      }, 1000);
     
 
 }
-
 
 startQuizBtn.addEventListener("click", startGame)
 
 
 
+
+
+
+// function setTime() {
+//     // Sets interval in variable
+// //     var timerInterval = setInterval(function() {
+// //       secondsLeft--;
+// //       timerEl.textContent = "Time" + secondsLeft;
+  
+// //       if(secondsLeft === 0) {
+// //         // Stops execution of action at set interval
+// //         clearInterval(timerInterval);
+
+// //         // link to scoreboard at the end, when scoreboard functiin is created 
+// //         // sendMessage();
+// //       }
+  
+// //     }, 1000);
+// //   }
 
 
 
