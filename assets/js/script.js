@@ -3,6 +3,8 @@ var qaViewEl= document.querySelector("#qa-view")
 var timerEl= document.querySelector("#timer")
 
 var startQuizBtn= document.querySelector("#start-quiz")
+
+
 /*
 step 1. displays start page - title and paragraph
 start button -  (triggers the quiz game and displays timer and question page)
