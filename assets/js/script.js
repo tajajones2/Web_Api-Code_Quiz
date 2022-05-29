@@ -1,12 +1,4 @@
-var introEl= document.querySelector("intro")
-var qaViewEl= document.querySelector("#qa-view")
-var timerEl= document.querySelector("#timer")
-
-var startQuizBtn= document.querySelector("#start-quiz")
-
-
-/*
-step 1. displays start page - title and paragraph
+/* step 1. displays start page - title and paragraph
 start button -  (triggers the quiz game and displays timer and question page)
 ​
 step 2. displays question page and hides start page - timer will start when the start button is clicked from start page, display question and show 4 four answer buttons,  
@@ -22,20 +14,42 @@ Show a dashboard of all the highscores
 */ 
 
 
+var introEl= document.querySelector("#intro")
+var qaViewEl= document.querySelector("#qa-view")
+var timerEl= document.querySelector("#timer")
+
+var answer1El= document.querySelector("#answer-1")
+var answer2El= document.querySelector("#answer-2")
+var answer3El= document.querySelector("#answer-3")
+var answer4El= document.querySelector("#answer-4")
+var questionTextEl= document.querySelector(".questionText")
+
+var startQuizBtn= document.querySelector("#start-quiz")
+
+startQuizBtn.addEventListener("click", startGame)
+
+answer1El.addEventListener("click", checkAnswer)
+answer2El.addEventListener("click", checkAnswer)
+answer3El.addEventListener("click", checkAnswer)
+answer4El.addEventListener("click", checkAnswer)
+
+
 
 var secondsLeft = 75;
 
 
-var question= [{
-title:"new question 1",
-answer:[ "answer1", "answer 2", "answer 3", "answer 4"]
-}]
+var question= {
+title:"What does HTML stand for?",
+answers:[ "something", "somthing else", "HyperText Markup Language", "nothing"],
+correctAnswer: "HyperText Markup Language"
+};
+
 
 
 
 function startGame (){
     qaViewEl.classList.remove("hide");
-    // introEl.classList.add("hide");
+    introEl.setAttribute("style", "Display: none");
     
   
     var timerInterval = setInterval(function() {
@@ -51,11 +65,44 @@ function startGame (){
         }
     
       }, 1000);
+
+     nextQuestion();
+    
+     
+
+}
+
+function nextQuestion (){
+    questionTextEl.innerHTML = question.title;
+
+    answer1El.innerHTML = question.answers[0];
+    answer2El.innerHTML = question.answers[1];
+    answer3El.innerHTML = question.answers[2];
+    answer4El.innerHTML = question.answers[3];
+
+
+}
+
+function checkAnswer (){
+    // check answer to get next question 
+    // check if the index is = to length of the array then end game otherwise get next question 
+    // create element for correct or not correct answer
+    // 
+    
+
+    nextQuestion();
+    
     
 
 }
 
-startQuizBtn.addEventListener("click", startGame)
+
+
+
+
+
+
+
 
 
 
