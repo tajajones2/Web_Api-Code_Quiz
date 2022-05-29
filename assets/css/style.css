@@ -12,12 +12,15 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* background-color: darkslategray; */
     margin: 0;
 }
 #intro {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    /* box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); */
     
 }
 
@@ -28,6 +31,7 @@ main {
     margin: 10%;
     background-color: aquamarine;
     border-radius: 25px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 #start-quiz {
@@ -48,4 +52,11 @@ main {
 
 .hide {
     display: none
+}
+
+#qa-view {
+    margin: 25px;
+    font-size: x-large;
+    
+
 }
