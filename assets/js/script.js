@@ -132,6 +132,8 @@ function startGame() {
     timerEl.textContent = "Timer: " + secondsLeft;
 
     if (secondsLeft <= 0) {
+        secondsLeft = 0;
+        timerEl.innerHTML = "Timer: " + secondsLeft;
       clearInterval(timerInterval);
 
       // link to scoreboard at the end, when scoreboard functiin is created
@@ -172,20 +174,3 @@ function checkAnswer(event) {
   // if question Number is less than total number of question 
   nextQuestion();
 }
-
-// function setTime() {
-//     // Sets interval in variable
-// //     var timerInterval = setInterval(function() {
-// //       secondsLeft--;
-// //       timerEl.textContent = "Time" + secondsLeft;
-
-// //       if(secondsLeft === 0) {
-// //         // Stops execution of action at set interval
-// //         clearInterval(timerInterval);
-
-// //         // link to scoreboard at the end, when scoreboard functiin is created
-// //         // sendMessage();
-// //       }
-
-// //     }, 1000);
-// //   }
