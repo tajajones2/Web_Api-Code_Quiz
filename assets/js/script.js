@@ -30,12 +30,13 @@ var saveEl = document.querySelector("#save");
 var ulEl = document.querySelector("#dashboard ul");
 var dashboardEL = document.querySelector("#dashboard");
 
+var scores = [];
+
 var timerInterval;
 
 var gameFeedbackEL = document.querySelector("#feedback");
 
 var startQuizBtn = document.querySelector("#start-quiz");
-
 startQuizBtn.addEventListener("click", startGame);
 
 answer1El.addEventListener("click", checkAnswer);
@@ -47,11 +48,6 @@ saveEl.addEventListener("click", displayScore);
 
 var secondsLeft = 100;
 
-// var question= {
-// title:"What does HTML stand for?",
-// answers:[ "something", "somthing else", "HyperText Markup Language", "nothing"],
-// correctAnswer: "HyperText Markup Language"
-// };
 
 var questions = [
   {
@@ -216,6 +212,7 @@ function checkAnswer(event) {
 
 function displayScore(event) {
   var initals = initialEl.value;
+  scores.push(initals + " - " + secondsLeft);
 
   var createListitem = document.createElement("li");
   createListitem.textContent = initals + " - " + secondsLeft;
@@ -225,4 +222,9 @@ function displayScore(event) {
   dashboardEL.classList.remove("hide");
 }
 
+
+// saving scores to storage 
+function saveStorage(){
+
+}
 
