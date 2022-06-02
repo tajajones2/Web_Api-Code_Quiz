@@ -31,7 +31,9 @@ var ulEl = document.querySelector("#dashboard ul");
 var dashboardEL = document.querySelector("#dashboard");
 
 var scores = [];
-var storage = localStorage.getItem("code-quiz")
+var storage = localStorage.getItem("code-quiz");
+
+var highscoresEl = document.querySelector("#high-scores");
 
 var timerInterval;
 
@@ -46,6 +48,7 @@ answer3El.addEventListener("click", checkAnswer);
 answer4El.addEventListener("click", checkAnswer);
 
 saveEl.addEventListener("click", displayScore);
+highscoresEl.addEventListener("click", displayHighscores);
 
 var secondsLeft = 100;
 
@@ -137,6 +140,7 @@ var questions = [
 ];
 
 function startGame() {
+  getStorage();
   qaViewEl.classList.remove("hide");
   introEl.setAttribute("style", "Display: none");
 
@@ -234,3 +238,27 @@ localStorage.setItem("code-quiz", scoresText)
 
 }
 
+function getStorage(){
+scores = JSON.parse(storage);
+
+for (var i = 0; i < scores.length; i++){
+  var createListitem = document.createElement("li");
+  // createListitem.textContent = initals + " - " + secondsLeft;
+  createListitem.textContent = scores[i];
+  ulEl.appendChild(createListitem);
+  
+}
+
+
+}
+
+function displayHighscores(){
+  scores = [];
+  getStorage();
+  introEl.setAttribute("style", "Display: none");
+  dashboardEL.classList.remove("hide");
+
+  highscoresEl.classList.add("hide");
+  timerEl.classList.add("hide");
+
+}

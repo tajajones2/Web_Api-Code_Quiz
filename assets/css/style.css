@@ -45,12 +45,16 @@ main {
     margin: 5px 0;
     
 }
+#high-scores {
+    cursor: pointer;
+}
 
 #high-scores, #timer {
     width: 7%;
     background-color: grey ;
     border-radius: 10px;
     padding: 10px;
+    
 }
 
 /* #timer {
