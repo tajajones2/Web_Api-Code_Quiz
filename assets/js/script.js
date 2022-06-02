@@ -23,7 +23,13 @@ var answer2El = document.querySelector("#answer-2");
 var answer3El = document.querySelector("#answer-3");
 var answer4El = document.querySelector("#answer-4");
 var questionTextEl = document.querySelector(".questionText");
-var gameOverEl = document.querySelector("#game-over")
+var gameOverEl = document.querySelector("#game-over");
+var finalEl = document.querySelector("#final");
+var initialEl = document.querySelector("#enter-init");
+var saveEl = document.querySelector("#save");
+var ulEl = document.querySelector("#dashboard ul");
+var dashboardEL = document.querySelector("#dashboard");
+
 var timerInterval;
 
 var gameFeedbackEL = document.querySelector("#feedback");
@@ -36,6 +42,8 @@ answer1El.addEventListener("click", checkAnswer);
 answer2El.addEventListener("click", checkAnswer);
 answer3El.addEventListener("click", checkAnswer);
 answer4El.addEventListener("click", checkAnswer);
+
+saveEl.addEventListener("click", displayScore);
 
 var secondsLeft = 100;
 
@@ -170,15 +178,16 @@ function nextQuestion() {
 }
 
 function gameOver() {
-  
   questionTextEl.classList.add("hide");
   answer1El.classList.add("hide");
   answer2El.classList.add("hide");
   answer3El.classList.add("hide");
   answer4El.classList.add("hide");
   gameFeedbackEL.classList.add("hide");
-  qaViewEl.classList.add("hide")
+  qaViewEl.classList.add("hide");
   gameOverEl.classList.remove("hide");
+
+  finalEl.innerHTML = secondsLeft;
 }
 
 function checkAnswer(event) {
@@ -204,3 +213,16 @@ function checkAnswer(event) {
   // if question Number is less than total number of question
   nextQuestion();
 }
+
+function displayScore(event) {
+  var initals = initialEl.value;
+
+  var createListitem = document.createElement("li");
+  createListitem.textContent = initals + " - " + secondsLeft;
+  ulEl.appendChild(createListitem);
+
+  gameOverEl.classList.add("hide");
+  dashboardEL.classList.remove("hide");
+}
+
+
