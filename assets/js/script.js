@@ -24,6 +24,8 @@ var answer3El = document.querySelector("#answer-3");
 var answer4El = document.querySelector("#answer-4");
 var questionTextEl = document.querySelector(".questionText");
 
+var gameFeedbackEL = document.querySelector("#feedback");
+
 var startQuizBtn = document.querySelector("#start-quiz");
 
 startQuizBtn.addEventListener("click", startGame);
@@ -33,7 +35,7 @@ answer2El.addEventListener("click", checkAnswer);
 answer3El.addEventListener("click", checkAnswer);
 answer4El.addEventListener("click", checkAnswer);
 
-var secondsLeft = 75;
+var secondsLeft = 100;
 
 // var question= {
 // title:"What does HTML stand for?",
@@ -41,17 +43,21 @@ var secondsLeft = 75;
 // correctAnswer: "HyperText Markup Language"
 // };
 
-var question = [
+var questions = [
   {
-    question:
-      "What does HTML stand for?",
-    correct_answer: "HyperText Markup Language",
-    answers: ["something", "somthing else", "HyperText Markup Language", "nothing"],
+    question: "What does HTML stand for?",
+    correctanswer: "HyperText Markup Language",
+    answers: [
+      "something",
+      "somthing else",
+      "HyperText Markup Language",
+      "nothing",
+    ],
   },
   {
     question:
       "The computer OEM manufacturer Clevo, known for its Sager notebook line, is based in which country?",
-    correct_answer: "Taiwan",
+    correctanswer: "Taiwan",
     answers: [
       "United States",
       "Germany",
@@ -61,13 +67,13 @@ var question = [
   },
   {
     question: "What is the domain name for the country Tuvalu?",
-    correct_answer: ".tv",
+    correctanswer: ".tv",
     answers: [".tv", ".tu", ".tt", ".tl"],
   },
   {
     question:
       "In HTML, which non-standard tag used to be be used to make elements scroll across the viewport?",
-    correct_answer: "&lt;marquee&gt;&lt;/marquee&gt;",
+    correctanswer: "&lt;marquee&gt;&lt;/marquee&gt;",
     answers: [
       "&lt;scroll&gt;&lt;/scroll&gt;",
       "&lt;move&gt;&lt;/move&gt;",
@@ -77,12 +83,12 @@ var question = [
   },
   {
     question: ".rs is the top-level domain for what country?",
-    correct_answer: "Serbia",
+    correctanswer: "Serbia",
     answers: ["Romania", "Serbia", "Russia", "Rwanda"],
   },
   {
     question: "What is known as &quot;the brain&quot; of the Computer?",
-    correct_answer: "Central Processing Unit",
+    correctanswer: "Central Processing Unit",
     answers: [
       "Motherboard",
       "Graphics Processing Unit",
@@ -92,12 +98,12 @@ var question = [
   },
   {
     question: "Which RAID array type is associated with data mirroring?",
-    correct_answer: "RAID 1",
+    correctanswer: "RAID 1",
     answers: ["RAID 0", "RAID 1", "RAID 10", "RAID 5"],
   },
   {
     question: "What does the term MIME stand for, in regards to computing?",
-    correct_answer: "Multipurpose Internet Mail Extensions",
+    correctanswer: "Multipurpose Internet Mail Extensions",
     answers: [
       "Multipurpose Internet Mail Extensions",
       "Mail Internet Mail Exchange",
@@ -107,7 +113,7 @@ var question = [
   },
   {
     question: "The acronym &quot;RIP&quot; stands for which of these?",
-    correct_answer: "Routing Information Protocol",
+    correctanswer: "Routing Information Protocol",
     answers: [
       "Runtime Instance Processes",
       "Regular Interval Processes",
@@ -118,7 +124,7 @@ var question = [
   {
     question:
       "How many bits make up the significand portion of a single precision floating point number?",
-    correct_answer: "23",
+    correctanswer: "23",
     answers: ["23", "8", "53", "15"],
   },
 ];
@@ -132,8 +138,8 @@ function startGame() {
     timerEl.textContent = "Timer: " + secondsLeft;
 
     if (secondsLeft <= 0) {
-        secondsLeft = 0;
-        timerEl.innerHTML = "Timer: " + secondsLeft;
+      secondsLeft = 0;
+      timerEl.innerHTML = "Timer: " + secondsLeft;
       clearInterval(timerInterval);
 
       // link to scoreboard at the end, when scoreboard functiin is created
@@ -145,32 +151,34 @@ function startGame() {
 }
 
 function nextQuestion() {
-  questionTextEl.innerHTML = question[questionNumber].question;
+  questionTextEl.innerHTML = questions[questionNumber].question;
 
-  answer1El.innerHTML = question[questionNumber].answers[0];
-  answer2El.innerHTML = question[questionNumber].answers[1];
-  answer3El.innerHTML = question[questionNumber].answers[2];
-  answer4El.innerHTML = question[questionNumber].answers[3];
+  answer1El.innerHTML = questions[questionNumber].answers[0];
+  answer2El.innerHTML = questions[questionNumber].answers[1];
+  answer3El.innerHTML = questions[questionNumber].answers[2];
+  answer4El.innerHTML = questions[questionNumber].answers[3];
 }
 
 function checkAnswer(event) {
+  var solution = questions[questionNumber].correctanswer;
   console.log(event.target.innerHTML);
   var userChoice = event.target.innerHTML;
   // check answer to get next question
   // check if the index is = to length of the array then end game otherwise get next question
   // create element for correct or not correct answer
-  
-  if (userChoice === question[questionNumber].correct_answer) {
+
+  if (userChoice === solution) {
+    gameFeedbackEL.innerHTML = "Correct";
     console.log("correct answer");
-    
 
     // create element for correct or not correct answer
   } else {
-    secondsLeft = secondsLeft - 10;
-    console.log("wrong answer")
+    secondsLeft -= 10;
+    gameFeedbackEL.innerHTML = "Incorrect";
+    console.log("wrong answer");
   }
 
   questionNumber++;
-  // if question Number is less than total number of question 
+  // if question Number is less than total number of question
   nextQuestion();
 }
