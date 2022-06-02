@@ -31,6 +31,7 @@ var ulEl = document.querySelector("#dashboard ul");
 var dashboardEL = document.querySelector("#dashboard");
 
 var scores = [];
+var storage = localStorage.getItem("code-quiz")
 
 var timerInterval;
 
@@ -220,11 +221,16 @@ function displayScore(event) {
 
   gameOverEl.classList.add("hide");
   dashboardEL.classList.remove("hide");
+
+  saveStorage();
 }
 
 
 // saving scores to storage 
 function saveStorage(){
+var scoresText = JSON.stringify(scores);
+
+localStorage.setItem("code-quiz", scoresText)
 
 }
 
