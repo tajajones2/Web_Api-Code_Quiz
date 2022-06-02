@@ -8,9 +8,9 @@ header {
     font-weight: bold;
 
 }
-ol {
+/* ul {
     list-style-type: upper-alpha;
-}
+} */
 
 body {
     display: flex;

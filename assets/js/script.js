@@ -23,6 +23,8 @@ var answer2El = document.querySelector("#answer-2");
 var answer3El = document.querySelector("#answer-3");
 var answer4El = document.querySelector("#answer-4");
 var questionTextEl = document.querySelector(".questionText");
+var gameOverEl = document.querySelector("#game-over")
+var timerInterval;
 
 var gameFeedbackEL = document.querySelector("#feedback");
 
@@ -133,7 +135,7 @@ function startGame() {
   qaViewEl.classList.remove("hide");
   introEl.setAttribute("style", "Display: none");
 
-  var timerInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     secondsLeft--;
     timerEl.textContent = "Timer: " + secondsLeft;
 
@@ -151,12 +153,32 @@ function startGame() {
 }
 
 function nextQuestion() {
-  questionTextEl.innerHTML = questions[questionNumber].question;
+  if (questions[questionNumber]) {
+    questionTextEl.innerHTML = questions[questionNumber].question;
 
-  answer1El.innerHTML = questions[questionNumber].answers[0];
-  answer2El.innerHTML = questions[questionNumber].answers[1];
-  answer3El.innerHTML = questions[questionNumber].answers[2];
-  answer4El.innerHTML = questions[questionNumber].answers[3];
+    answer1El.innerHTML = questions[questionNumber].answers[0];
+    answer2El.innerHTML = questions[questionNumber].answers[1];
+    answer3El.innerHTML = questions[questionNumber].answers[2];
+    answer4El.innerHTML = questions[questionNumber].answers[3];
+  }
+
+  if (questionNumber === 10) {
+    clearInterval(timerInterval);
+
+    gameOver();
+  }
+}
+
+function gameOver() {
+  
+  questionTextEl.classList.add("hide");
+  answer1El.classList.add("hide");
+  answer2El.classList.add("hide");
+  answer3El.classList.add("hide");
+  answer4El.classList.add("hide");
+  gameFeedbackEL.classList.add("hide");
+  qaViewEl.classList.add("hide")
+  gameOverEl.classList.remove("hide");
 }
 
 function checkAnswer(event) {
