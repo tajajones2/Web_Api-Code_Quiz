@@ -34,6 +34,8 @@ var scores = [];
 var storage = localStorage.getItem("code-quiz");
 
 var highscoresEl = document.querySelector("#high-scores");
+var clearEL = document.querySelector("#clear")
+var backEl = document.querySelector("#back")
 
 var timerInterval;
 
@@ -49,6 +51,8 @@ answer4El.addEventListener("click", checkAnswer);
 
 saveEl.addEventListener("click", displayScore);
 highscoresEl.addEventListener("click", displayHighscores);
+clearEL.addEventListener("click", clearButton);
+backEl.addEventListener("click", backButton);
 
 var secondsLeft = 100;
 
@@ -228,8 +232,6 @@ function displayScore(event) {
 
   saveStorage();
 }
-
-
 // saving scores to storage 
 function saveStorage(){
 var scoresText = JSON.stringify(scores);
@@ -260,5 +262,13 @@ function displayHighscores(){
 
   highscoresEl.classList.add("hide");
   timerEl.classList.add("hide");
+
+}
+
+function clearButton(){
+localStorage
+}
+
+function backButton(){
 
 }
