@@ -243,14 +243,17 @@ localStorage.setItem("code-quiz", scoresText)
 function getStorage(){
 scores = JSON.parse(storage);
 
-for (var i = 0; i < scores.length; i++){
-  var createListitem = document.createElement("li");
-  // createListitem.textContent = initals + " - " + secondsLeft;
-  createListitem.textContent = scores[i];
-  ulEl.appendChild(createListitem);
-  
-}
+// if storage is empty, then go to for loop 
 
+if (storage !== null){
+  for (var i = 0; i < scores.length; i++){
+    var createListitem = document.createElement("li");
+    // createListitem.textContent = initals + " - " + secondsLeft;
+    createListitem.textContent = scores[i];
+    ulEl.appendChild(createListitem);
+    
+  }
+}
 
 }
 
