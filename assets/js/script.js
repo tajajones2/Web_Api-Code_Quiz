@@ -221,7 +221,13 @@ function checkAnswer(event) {
 
 function displayScore(event) {
   var initals = initialEl.value;
-  scores.push(initals + " - " + secondsLeft);
+  if (scores !== null){
+    scores.push(initals + " - " + secondsLeft);
+  } else {
+    scores = [initals + " - " + secondsLeft];
+  }
+  
+  
 
   var createListitem = document.createElement("li");
   createListitem.textContent = initals + " - " + secondsLeft;
@@ -245,10 +251,9 @@ scores = JSON.parse(storage);
 
 // if storage is empty, then go to for loop 
 
-if (storage !== null){
+if (scores !== null){
   for (var i = 0; i < scores.length; i++){
     var createListitem = document.createElement("li");
-    // createListitem.textContent = initals + " - " + secondsLeft;
     createListitem.textContent = scores[i];
     ulEl.appendChild(createListitem);
     
