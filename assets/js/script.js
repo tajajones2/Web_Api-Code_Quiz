@@ -34,8 +34,8 @@ var scores = [];
 var storage = localStorage.getItem("code-quiz");
 
 var highscoresEl = document.querySelector("#high-scores");
-var clearEL = document.querySelector("#clear")
-var backEl = document.querySelector("#back")
+var clearEL = document.querySelector("#clear");
+var backEl = document.querySelector("#back");
 
 var timerInterval;
 
@@ -55,7 +55,6 @@ clearEL.addEventListener("click", clearButton);
 backEl.addEventListener("click", backButton);
 
 var secondsLeft = 100;
-
 
 var questions = [
   {
@@ -221,13 +220,11 @@ function checkAnswer(event) {
 
 function displayScore(event) {
   var initals = initialEl.value;
-  if (scores !== null){
+  if (scores !== null) {
     scores.push(initals + " - " + secondsLeft);
   } else {
     scores = [initals + " - " + secondsLeft];
   }
-  
-  
 
   var createListitem = document.createElement("li");
   createListitem.textContent = initals + " - " + secondsLeft;
@@ -238,31 +235,28 @@ function displayScore(event) {
 
   saveStorage();
 }
-// saving scores to storage 
-function saveStorage(){
-var scoresText = JSON.stringify(scores);
+// saving scores to storage
+function saveStorage() {
+  var scoresText = JSON.stringify(scores);
 
-localStorage.setItem("code-quiz", scoresText)
-
+  localStorage.setItem("code-quiz", scoresText);
 }
 
-function getStorage(){
-scores = JSON.parse(storage);
+function getStorage() {
+  scores = JSON.parse(storage);
 
-// if storage is empty, then go to for loop 
+  // if storage is empty, then go to for loop
 
-if (scores !== null){
-  for (var i = 0; i < scores.length; i++){
-    var createListitem = document.createElement("li");
-    createListitem.textContent = scores[i];
-    ulEl.appendChild(createListitem);
-    
+  if (scores !== null) {
+    for (var i = 0; i < scores.length; i++) {
+      var createListitem = document.createElement("li");
+      createListitem.textContent = scores[i];
+      ulEl.appendChild(createListitem);
+    }
   }
 }
 
-}
-
-function displayHighscores(){
+function displayHighscores() {
   scores = [];
   getStorage();
   introEl.setAttribute("style", "Display: none");
@@ -270,13 +264,10 @@ function displayHighscores(){
 
   highscoresEl.classList.add("hide");
   timerEl.classList.add("hide");
-
 }
 
-function clearButton(){
-localStorage
+function clearButton() {
+  localStorage;
 }
 
-function backButton(){
-
-}
+function backButton() {}

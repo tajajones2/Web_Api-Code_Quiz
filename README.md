@@ -1,12 +1,20 @@
-# Web Api's: Code Quiz
+# Web Api's: Computer Science Quiz
 
 ## Description
-
+This project will demeonstarte creating an application that can be used for quizes based on criteria that you have selected. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write.
 
 
 ## Usage
 
+- WHEN you click the start button to begin quiz thena timer will start and you will be preented with a question. 
 
+- WHEN you answer a question you are then preented with incorrect or correct depending on the answer that is chosen and THEN you are presented with another question. 
+
+- WHEN you answer a question incorrectly, THEN time is subtracted from the clock.
+
+- WHEN all questions are answered or the timer reaches 0, THEN the game is over.
+
+- WHEN the game is over THEN you can can save my initials and my score. 
 
 
 Application deployed at live URL.
@@ -17,10 +25,10 @@ Application GitHub URL submitted.
 
 GitHub repository that contains application code.
 
-<a href="https://tajajones2.github.io/Web_Api-Code_Quiz/">Click here for live link!</a>
+[Click Here for live link!](https://tajajones2.github.io/Web_Api-Code_Quiz/) 
 
     
-![alt tag](./assets/images/coding%20quiz.png)
+![alt tag](./assets/images/compsci_quiz.png)
     
 
 ## Credits
